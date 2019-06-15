@@ -959,10 +959,11 @@ public class MainEditor extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent event) {
                 if(selectedRow!=jTable8.getSelectedRow() 
                         && jTable8.getSelectedRow()<map.getAnimation().getFrames().length){
-                    int selectedRow = jTable8.getSelectedRow();
-                    if(selectedRow<0){
-                        selectedRow = 0;
+                    int newRow = jTable8.getSelectedRow();
+                    if(newRow<0){
+                        newRow = 0;
                     }
+                    selectedRow = newRow;
                     mapPanel.setSelectedAnimFrame(selectedRow);
                     mapPanel.updateMapDisplay();
                     jPanel2.revalidate();
