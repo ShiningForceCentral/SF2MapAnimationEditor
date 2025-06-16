@@ -10,6 +10,7 @@ import com.sfc.sf2.map.animation.MapAnimation;
 import com.sfc.sf2.map.block.gui.BlockSlotPanel;
 import com.sfc.sf2.map.block.layout.MapBlockLayout;
 import com.sfc.sf2.map.animation.MapAnimationManager;
+import com.sfc.sf2.map.layout.DisassemblyException;
 import com.sfc.sf2.map.layout.layout.MapLayoutLayout;
 import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
@@ -925,8 +926,12 @@ public class MainEditor extends javax.swing.JFrame {
         }        
         System.out.println(animPath.toString());
         
-        mapAnimationManager.importDisassembly(jTextField21.getText(),jTextField22.getText(),tilesetsPath.toString(),blocksetPath.toString(),layoutPath.toString(),
-                animPath.toString());
+        try {
+            mapAnimationManager.importDisassembly(jTextField21.getText(),jTextField22.getText(),tilesetsPath.toString(),blocksetPath.toString(),layoutPath.toString(),
+                    animPath.toString());
+        } catch (DisassemblyException ex) {
+            Logger.getLogger(MainEditor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         map = mapAnimationManager.getMap();
         

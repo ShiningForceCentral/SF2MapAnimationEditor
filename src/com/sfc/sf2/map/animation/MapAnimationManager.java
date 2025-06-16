@@ -10,6 +10,7 @@ import com.sfc.sf2.map.block.MapBlock;
 import com.sfc.sf2.map.animation.gui.MapAnimationPanel;
 import com.sfc.sf2.map.animation.io.DisassemblyManager;
 import com.sfc.sf2.map.animation.io.PngManager;
+import com.sfc.sf2.map.layout.DisassemblyException;
 import com.sfc.sf2.map.layout.MapLayout;
 import com.sfc.sf2.map.layout.MapLayoutManager;
 
@@ -22,7 +23,8 @@ public class MapAnimationManager {
     private MapLayoutManager mapLayoutManager = new MapLayoutManager();
     private Map map;
     
-    public void importDisassembly(String palettesPath, String tilesetsPath, String tilesetsFilePath, String blocksPath, String layoutPath, String animationsPath){
+    public void importDisassembly(String palettesPath, String tilesetsPath, String tilesetsFilePath, String blocksPath, String layoutPath, String animationsPath)
+            throws DisassemblyException {
         System.out.println("com.sfc.sf2.map.MapManager.importDisassembly() - Importing disassembly ...");
         map = new Map();
         mapLayoutManager.importDisassembly(palettesPath, tilesetsPath, tilesetsFilePath, blocksPath, layoutPath);
